@@ -50,6 +50,5 @@
 .
 ├── computer-vision-cnn(with dropout).ipynb     # 含 Dropout 的模型訓練程式
 ├── computer-vision-cnn(without dropout).ipynb  # 無 Dropout 的模型訓練程式
-├── CNN.docx                                    # 實驗報告文件
-├── results/                                    # 實驗圖表（準確率變化圖）
+├── CNN.pdf                                     # 實驗報告文件(內含"訓練準確率"與"驗證準確率"之變化圖)
 └── README.md
