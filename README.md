@@ -1,18 +1,18 @@
 # Emergency Image Classification with CNN: Dropout Comparison
 
-本專案針對卷積神經網路（CNN）模型進行 Dropout 正則化的實驗，探討其在緊急事件圖片分類任務中的效果，分析有無 Dropout 對訓練與測試準確率的影響。
+本專案針對卷積神經網路(CNN)模型進行Dropout正則化(為了避免模型過度擬合)的實驗，探討其在緊急事件圖片分類任務中的效果，分析有無Dropout對訓練與測試準確率的影響。
 
 ---
 
 ## 專案目的
 
-比較 CNN 模型在有無 Dropout（隨機失活）情況下的訓練與驗證表現，了解其對過擬合的影響。
+比較CNN模型在有無Dropout(隨機失活)情況下的訓練與驗證表現，了解其對過擬合的影響。
 
 ---
 
 ## 資料集資訊
 
-- 資料來源：[Kaggle - Emergency vs Non-Emergency](https://www.kaggle.com/)
+- 資料來源：[Kaggle - Emergency vs Non-Emergency](https://www.kaggle.com/code/trinadhsingaladevi/computer-vision-cnn)
 - 訓練資料：1,646 張圖像  
 - 測試資料：706 張圖像  
 - 圖像大小：28 × 28 × 3（已標準化）
