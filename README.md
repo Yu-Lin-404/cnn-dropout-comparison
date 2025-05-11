@@ -1,34 +1,55 @@
-# Emergency CNN Classification with Dropout Comparison
+# Emergency Image Classification with CNN: Dropout Comparison
 
-針對 CNN 模型進行 Dropout 正則化的實驗，探討其對於緊急事件圖片分類的影響。
+本專案針對卷積神經網路（CNN）模型進行 Dropout 正則化的實驗，探討其在緊急事件圖片分類任務中的效果，分析有無 Dropout 對訓練與測試準確率的影響。
 
-##  專案目的                                                                                                                            
-比較 CNN 模型在有無dropout(隨機失活)的形況下對模型的影響。
+---
 
-##  資料集                                                                                                                                            
-- 來源：Kaggle 緊急影像分類比賽資料集（如 hp-2020）
-- 訓練資料：1646 張                                                                                                                                            
-- 測試資料：706 張                                                                                                                                            
-- 圖片大小：28x28x3                                                                                                                                            
+## 專案目的
 
-##  模型設計                                                                                                                                            
-- 模型 A：Baseline CNN
-- 模型 B：CNN + Dropout(0.25)
-- 優化器：RMSprop                                                                                                                                            
-- 損失函數：categorical_crossentropy
+比較 CNN 模型在有無 Dropout（隨機失活）情況下的訓練與驗證表現，了解其對過擬合的影響。
 
-##  實驗結果摘要                                                                                                                                            
+---
+
+## 資料集資訊
+
+- 資料來源：[Kaggle - Emergency vs Non-Emergency](https://www.kaggle.com/)
+- 訓練資料：1,646 張圖像  
+- 測試資料：706 張圖像  
+- 圖像大小：28 × 28 × 3（已標準化）
+
+---
+
+## 模型架構與訓練設定
+
+| 模型 | Dropout 使用 | 優化器 | 損失函數 | 訓練週期 (Epochs) |
+|------|--------------|--------|-----------|------------------|
+| A    | ❌ 無         | RMSprop | categorical_crossentropy | 30 |
+| B    | ✅ 是 (0.25)  | RMSprop | categorical_crossentropy | 30 |
+
+---
+
+## 實驗結果摘要
 
 | 模型 | 訓練正確率 | 測試正確率 | 備註 |
 |------|-------------|-------------|------|
-| A    | 約 83%      | 約 76%      | 無 Dropout，易過擬合 |
-| B    | 約 81%      | 約 76%      | 加入 Dropout，測試穩定 |
+| A (無 Dropout) | 約 83%      | 約 76%      | 易過擬合，驗證波動較大 |
+| B (含 Dropout) | 約 81%      | 約 76%      | 訓練穩定，測試表現略好 |
 
-##  結論                                                                                                                                            
-Dropout 雖稍微降低訓練準確率，但可有效降低過擬合、提升測試穩定性。
+---
 
-##  執行方式                                                                                                                                            
-```bash                                                                                                                                            
-pip install -r requirements.txt
-python model/model_no_dropout.py
-python model/model_with_dropout.py
+## 結論
+
+- Dropout 可略降低訓練準確率，但有助於減少過擬合。
+- 在驗證集上表現更穩定，適合實務部署。
+
+---
+
+## 專案結構
+
+```plaintext
+.
+├── computer-vision-cnn(with dropout).ipynb     # 含 Dropout 的模型訓練程式
+├── computer-vision-cnn(without dropout).ipynb  # 無 Dropout 的模型訓練程式
+├── CNN.docx                                    # 實驗報告文件
+├── results/                                    # 實驗圖表（準確率變化圖）
+└── README.md
